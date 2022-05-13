@@ -4,7 +4,6 @@ import Header from './common/header';
 import Home from './page/Home';
 import SearchArticle from './page/SearchArticle';
 import SubmitArticle from './page/SubmitArticle';
-import Contactus from './page/Contactus';
 import NotFound from './page/404';
 
 class App extends PureComponent {
@@ -17,7 +16,6 @@ class App extends PureComponent {
             <Route exact path="/" component={Home} />
             <Route exact path="/SearchArticle" component={SearchArticle} />
             <Route exact path="/SubmitArticle" component={SubmitArticle} />
-            <Route exact path="/Contantus" component={Contactus} />
             <Route exact path="/404" component={NotFound} />
             <Route path="*" component={NotFound} />
           </Switch>
