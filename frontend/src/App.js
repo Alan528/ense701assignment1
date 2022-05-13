@@ -1,29 +1,28 @@
-import React from "react";
-import {Route, NavLink, BrowserRouter as Router,  Redirect} from "react-router-dom";
+import React, { PureComponent } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Header from './common/header';
+import Home from './pages/Home';
+import SearchArticle from './pages/SearchArticle';
+import SubmitArticle from './pages/SubmitArticle';
+import NotFound from './pages/404';
 
-import Home from "./pages/Home";
-import SearchArticle from "./pages/SearchArticle";
-import SubmitArticle from "./pages/SubmitArticle"; 
-import NotFoundPage from "./pages/404";
-const App = () =>  {
+class App extends PureComponent {
+  render() {
     return (
+      <div>
+        <Header />
         <Router>
-        <div>
-          <h1>Software Engineering Practice Evidence Repository (SEPER)</h1>
-            <ul className="header">
-              <li><NavLink exact to = "/">Home</NavLink></li>
-              <li><NavLink to = "/SearchArticle">Search Article</NavLink></li>
-              <li><NavLink to = "/SubmitArticle">Submit an Article</NavLink></li>
-              </ul>
-              <div className="content">
-                <Route exact path="/" component={Home}/>
-                <Route  path="/SearchArticle" component={SearchArticle}/>
-                <Route  path="/SubmitArticle" component={SubmitArticle}/>
-                <Route exact path="/404" component={NotFoundPage}/>
-                <Redirect to="/404" />
-                </div>
-                </div>
-                </Router>
-                );
-              }
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/SearchArticle" component={SearchArticle} />
+            <Route exact path="/SubmitArticle" component={SubmitArticle} />
+            <Route exact path="/404" component={NotFound} />
+            <Route path="*" component={NotFound} />
+          </Switch>
+        </Router>
+      </div>
+    );
+  }
+}
+
 export default App;
