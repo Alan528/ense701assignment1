@@ -1,28 +1,29 @@
-import React, { PureComponent } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Header from './common/header';
-import Home from './page/Home';
-import SearchArticle from './page/SearchArticle';
-import SubmitArticle from './page/SubmitArticle';
-import NotFound from './page/404';
+import React from "react";
+import {Route, NavLink, BrowserRouter as Router,  Redirect} from "react-router-dom";
 
-class App extends PureComponent {
-  render() {
+import Home from "./pages/Home";
+import SearchArticle from "./pages/SearchArticle";
+import SubmitArticle from "./pages/SubmitArticle"; 
+import NotFoundPage from "./pages/404";
+const App = () =>  {
     return (
-      <div>
-        <Header />
         <Router>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/SearchArticle" component={SearchArticle} />
-            <Route exact path="/SubmitArticle" component={SubmitArticle} />
-            <Route exact path="/404" component={NotFound} />
-            <Route path="*" component={NotFound} />
-          </Switch>
-        </Router>
-      </div>
-    );
-  }
-}
-
+        <div>
+          <h1>Software Engineering Practice Evidence Repository (SEPER)</h1>
+            <ul className="header">
+              <li><NavLink exact to = "/">Home</NavLink></li>
+              <li><NavLink to = "/SearchArticle">Search Article</NavLink></li>
+              <li><NavLink to = "/SubmitArticle">Submit an Article</NavLink></li>
+              </ul>
+              <div className="content">
+                <Route exact path="/" component={Home}/>
+                <Route  path="/SearchArticle" component={SearchArticle}/>
+                <Route  path="/SubmitArticle" component={SubmitArticle}/>
+                <Route exact path="/404" component={NotFoundPage}/>
+                <Redirect to="/404" />
+                </div>
+                </div>
+                </Router>
+                );
+              }
 export default App;
