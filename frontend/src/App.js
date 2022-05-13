@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { PureComponent } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Header from './common/header';
+import Home from './page/Home';
+import SearchArticle from './page/SearchArticle';
+import SubmitArticle from './page/SubmitArticle';
+import Contactus from './page/Contactus';
+import NotFound from './page/404';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends PureComponent {
+  render() {
+    return (
+      <div>
+        <Header />
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/SearchArticle" component={SearchArticle} />
+            <Route exact path="/SubmitArticle" component={SubmitArticle} />
+            <Route exact path="/Contantus" component={Contactus} />
+            <Route exact path="/404" component={NotFound} />
+            <Route path="*" component={NotFound} />
+          </Switch>
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;
