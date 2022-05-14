@@ -20,7 +20,7 @@ const App = () =>  {
           <Route path="/SearchArticle" component={SearchArticle}/>
           <Route path="/SubmitArticle" component={SubmitArticle}/>
           <Route exact path="/404" component={NotFoundPage}/>
-          <Redirect to="/404" />
+          <Redirect to="/" />
         </div>
       </div>
       </Router>
