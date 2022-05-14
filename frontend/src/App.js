@@ -1,28 +1,30 @@
-import React, { PureComponent } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Header from './common/header';
+import React from 'react';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import Home from './pages/Home';
 import SearchArticle from './pages/SearchArticle';
 import SubmitArticle from './pages/SubmitArticle';
-import NotFound from './pages/404';
+import NotFoundPage from './pages/404';
 
-class App extends PureComponent {
-  render() {
-    return (
+const App = () =>  {
+  return (
+      <Router>
       <div>
-        <Header />
-        <Router>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/SearchArticle" component={SearchArticle} />
-            <Route exact path="/SubmitArticle" component={SubmitArticle} />
-            <Route exact path="/404" component={NotFound} />
-            <Route path="*" component={NotFound} />
-          </Switch>
-        </Router>
+        <h1>Software Practice Empirical Evidence Database (SPEED)</h1>
+          <ul className="header">
+              <li><a href = "/">Home</a></li>
+              <li><a href = "/SearchArticle">Select the Practice</a></li>
+              <li><a href = "/SubmitArticle">Submit an Article</a></li>
+          </ul>
+        <div className="content">
+          <Route exact path="/" component={Home}/>
+          <Route path="/SearchArticle" component={SearchArticle}/>
+          <Route path="/SubmitArticle" component={SubmitArticle}/>
+          <Route exact path="/404" component={NotFoundPage}/>
+          <Redirect to="/404" />
+        </div>
       </div>
-    );
-  }
+      </Router>
+  );
 }
 
 export default App;
