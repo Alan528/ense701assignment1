@@ -1,10 +1,14 @@
 body {
-  background-color: #5d9ff5;
+  background-color: white;
   padding: 20px;
   margin: 0;
   }
   h1, h2, p, ul, li {
   font-family: sans-serif;
+  }
+  h1{
+    text-align: center;
+    color: dodgerblue;
   }
   ul.header li {
   display: inline;
