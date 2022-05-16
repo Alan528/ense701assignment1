@@ -1,33 +1,121 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-const SubmissionForm = () => {
- const { register, handleSubmit } = useForm();
- const [result, setResult] = useState("");
- const onSubmit = (data) => setResult(JSON.stringify(data));
- return (
- <form onSubmit={handleSubmit(onSubmit)}>
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import '../App.css';
+import axios from 'axios';
 
- <p><b>Title:</b></p>
- <input {...register("title")} placeholder="Title" /><p></p>
- <p><b>Authors:</b></p>
- <input {...register("authors")} placeholder="Authors" /><p></p>
- <p><b>Publication Year:</b></p>
- <input {...register("pubyear")} placeholder="Publication Year" /><p></p>
- <p><b>DOI:</b></p>
- <input {...register("doi")} placeholder="DOI" />
+class SubmissionForm extends Component {
+  constructor() {
+    super();
+    this.state = {
+      title: '',
+      authors:'',
+      publication_year:'',
+      doi:''
+    };
+  }
 
- <br></br>
- <br></br>
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+
+    const data = {
+      title: this.state.title,
+      authors: this.state.authors,
+      publication_year: this.state.publication_year,
+      doi: this.state.doi
+    };
+
+    axios
+      .post('http://localhost:3000/api/articles', data)
+      .then(res => {
+        this.setState({
+            title: '',
+            authors:'',
+            publication_year:'',
+            doi:''
+        })
+        this.props.history.push('/');
+      })
+      .catch(err => {
+        console.log("Error in CreateArticle!");
+      })
+  };
+
+  render() {
+    return (
+      <div className="CreateArticle">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-8 m-auto">
+              <br />
+              <Link to="/" className="btn btn-outline-warning float-left">
+                  Show Articles
+              </Link>
+            </div>
+            <div className="col-md-8 m-auto">
+              <h1 className="display-4 text-center">Submit Article</h1>
+
+              <form noValidate onSubmit={this.onSubmit}>
+                <div className='form-group'>
+                  <input
+                    type='text'
+                    placeholder='Title of the article'
+                    name='title'
+                    className='form-control'
+                    value={this.state.title}
+                    onChange={this.onChange}
+                  />
+                </div>
+                <br />
 
 
- <select {...register("sepractice")}>
- <option value="">Select SE practice...</option>
- <option value="TDD">TDD</option>
- <option value="Mob Programming">Mob Programmin</option>
- </select>
- <p>{result}</p>
- <input type="submit" />
- </form>
- );
+                <div className='form-group'>
+                  <input
+                    type='text'
+                    placeholder='Author'
+                    name='authors'
+                    className='form-control'
+                    value={this.state.authors}
+                    onChange={this.onChange}
+                  />
+                </div>
+
+
+                <div className='form-group'>
+                  <input
+                    type='date'
+                    placeholder='publication_year'
+                    name='publication_year'
+                    className='form-control'
+                    value={this.state.publication_year}
+                    onChange={this.onChange}
+                  />
+                </div>
+                <div className='form-group'>
+                  <input
+                    type='text'
+                    placeholder='DOI'
+                    name='doi'
+                    className='form-control'
+                    value={this.state.doi}
+                    onChange={this.onChange}
+                  />
+                </div>
+
+                <input
+                    type="submit"
+                    className="btn btn-outline-warning btn-block mt-4"
+                />
+              </form>
+          </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
+
 export default SubmissionForm;
