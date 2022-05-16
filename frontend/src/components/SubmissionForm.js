@@ -7,11 +7,18 @@ const SubmissionForm = () => {
  return (
  <form onSubmit={handleSubmit(onSubmit)}>
 
- <input {...register("title")} placeholder="Title" />
- <p><input {...register("authors")} placeholder="Authors" /></p>
- <p><input {...register("source")} placeholder="Source" /></p>
- <p><input {...register("pubyear")} placeholder="Publication Year" /></p>
- <p><input {...register("doi")} placeholder="DOI" /></p>
+ <p><b>Title:</b></p>
+ <input {...register("title")} placeholder="Title" /><p></p>
+ <p><b>Authors:</b></p>
+ <input {...register("authors")} placeholder="Authors" /><p></p>
+ <p><b>Publication Year:</b></p>
+ <input {...register("pubyear")} placeholder="Publication Year" /><p></p>
+ <p><b>DOI:</b></p>
+ <input {...register("doi")} placeholder="DOI" />
+
+ <br></br>
+ <br></br>
+
 
  <select {...register("sepractice")}>
  <option value="">Select SE practice...</option>
