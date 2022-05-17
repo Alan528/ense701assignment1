@@ -62,7 +62,6 @@ class SubmissionForm extends Component {
                     onChange={this.onChange}
                   />
                 </div>
-                <br />
 
 
                 <div className='form-group'>
