@@ -14,14 +14,14 @@ class ShowArticles extends Component {
 
   componentDidMount() {
     axios
-      .get('http://localhost:3000/api/articles')
+      .get('http://localhost:5000/api/articles')
       .then(res => {
         this.setState({
           articles: res.data
         })
       })
       .catch(err =>{
-        console.log('Error from ShowBookList');
+        console.log('Error from ShowArticlesList');
       })
   };
 
@@ -45,7 +45,7 @@ class ShowArticles extends Component {
           <div className="row">
             <div className="col-md-12">
               <br />
-              <h2 className="display-4 text-center">articles List</h2>
+              <h2 className="display-4 text-center">Articles List</h2>
             </div>
 
             <div className="col-md-11">

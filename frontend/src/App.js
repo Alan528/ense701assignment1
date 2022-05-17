@@ -10,7 +10,6 @@ import SearchArticle from './pages/SearchArticle';
 import SubmitArticle from './pages/SubmitArticle';
 import About from './pages/about';
 import NotFoundPage from './pages/404';
-
 import ShowArticles from './components/ShowArticles';
 import SubmissionForm from './components/SubmissionForm';
 
@@ -23,6 +22,7 @@ const App = () =>  {
           <li><a href= "/">Home</a></li>
           <li><a href = "/SearchArticle">Search Article</a></li>
           <li><a href = "/SubmitArticle">Submit an Article</a></li>
+          <li><a href = "/ShowArticles">ShowArticles</a></li>
           <li style={{float: "right"}}><a href = "/About">About Us</a></li>
         </ul>
       <div className="content">
@@ -32,7 +32,7 @@ const App = () =>  {
         <Route path="/SubmitArticle" component={SubmitArticle}/>
         <Route path="/About" component={About}/>
         <Route exact path="/404" component={NotFoundPage}/>
-        <Route exact path='/' component={ShowArticles} />
+        <Route exact path='/ShowArticles' component={ShowArticles} />
         <Route path='/create-article' component={SubmissionForm} />
         <Redirect to="/" />
       </Switch>

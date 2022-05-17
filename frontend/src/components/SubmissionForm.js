@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import '../App.css';
 import axios from 'axios';
 
@@ -29,7 +28,7 @@ class SubmissionForm extends Component {
     };
 
     axios
-      .post('http://localhost:3000/api/articles', data)
+      .post('http://localhost:5000/api/articles', data)
       .then(res => {
         this.setState({
             title: '',
@@ -49,12 +48,6 @@ class SubmissionForm extends Component {
       <div className="CreateArticle">
         <div className="container">
           <div className="row">
-            <div className="col-md-8 m-auto">
-              <br />
-              <Link to="/" className="btn btn-outline-warning float-left">
-                  Show Articles
-              </Link>
-            </div>
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Submit Article</h1>
 
