@@ -11,6 +11,9 @@ import SubmitArticle from './pages/SubmitArticle';
 import About from './pages/about';
 import NotFoundPage from './pages/404';
 
+import ShowArticles from './components/ShowArticles';
+import SubmissionForm from './components/SubmissionForm';
+
 const App = () =>  {
   return (
       <Router>
@@ -29,6 +32,8 @@ const App = () =>  {
         <Route path="/SubmitArticle" component={SubmitArticle}/>
         <Route path="/About" component={About}/>
         <Route exact path="/404" component={NotFoundPage}/>
+        <Route exact path='/' component={ShowArticles} />
+        <Route path='/create-article' component={SubmissionForm} />
         <Redirect to="/" />
       </Switch>
       </div>
