@@ -29,8 +29,5 @@
     "mongoose": "^6.3.3",
     "react-router-dom": "^6.3.0",
     "validation": "^0.0.1"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.16"
   }
 }
