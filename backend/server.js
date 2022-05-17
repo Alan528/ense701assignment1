@@ -22,9 +22,9 @@ server.use('/api/articles', articles);
 server.listen(PORT, console.log(`server is working and listening on PORT ${PORT}`));
 
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static("frontend/build"));
+    server.use(express.static("frontend/build"));
   }
   
-  app.get("/", (request, response) => {
+  server.get("/", (request, response) => {
     response.sendFile(path.join(__dirname, "frontend/build", "index.html"));
   });
