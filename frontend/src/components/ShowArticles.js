@@ -13,7 +13,7 @@ class ShowArticles extends Component {
 
   componentDidMount() {
     axios
-      .get('http://localhost:5000/api/articles')
+      .get('https://group4-assignment1b.herokuapp.com/api/articles')
       .then(res => {
         this.setState({
           articles: res.data
