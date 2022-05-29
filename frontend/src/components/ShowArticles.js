@@ -6,9 +6,7 @@ import ArticleCard from './ArticleCard';
 class ShowArticles extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      articles: []
-    };
+    this.state = {articles: []};
   }
 
   componentDidMount() {
@@ -24,7 +22,6 @@ class ShowArticles extends Component {
       })
   };
 
-
   render() {
     const articles = this.state.articles;
     console.log("PrintBook: " + articles);
@@ -34,7 +31,12 @@ class ShowArticles extends Component {
         articleList = "there is no book record!";
     } else {
         articleList = articles.map((article, k) =>
+        <>
         <ArticleCard article={article} key={k} />
+        <div>{article._id}</div>
+        <button onClick={this.deleteArticle.bind(this,article._id)}>Delete me</button>
+        </>
+        
       );
     }
 
@@ -55,6 +57,18 @@ class ShowArticles extends Component {
       </div>
     );
   }
+
+  deleteArticle(id){
+    axios.delete('https://group4-assignment1b.herokuapp.com/api/articles/'+id).then(res => { 
+      window.location.href = `/ShowArticles`;
+      ; 
+      }) 
+      .catch(err => { 
+      console.log("Error form ShowBookDetails_deleteClick"); 
+      }) 
+      }; 
 }
+
+
 
 export default ShowArticles;
