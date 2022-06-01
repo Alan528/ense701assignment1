@@ -12,6 +12,7 @@ import About from './pages/about';
 import NotFoundPage from './pages/404';
 import ShowArticles from './components/ShowArticles';
 import SubmissionForm from './components/SubmissionForm';
+import ContactForm from './components/ContactForm';
 
 const App = () =>  {
   return (
@@ -23,6 +24,7 @@ const App = () =>  {
           <li><a href = "/SearchArticle">Search Article</a></li>
           <li><a href = "/SubmitArticle">Submit an Article</a></li>
           <li><a href = "/ShowArticles">ShowArticles</a></li>
+          <li style={{float: "right"}}><a href = "/ContactForm">Contact Us</a></li>
           <li style={{float: "right"}}><a href = "/About">About Us</a></li>
         </ul>
       <div className="content">
@@ -30,6 +32,7 @@ const App = () =>  {
         <Route exact path="/" component={Home}/>
         <Route path="/SearchArticle" component={SearchArticle}/>
         <Route path="/SubmitArticle" component={SubmitArticle}/>
+        <Route path="/ContactForm" component={ContactForm}/>
         <Route path="/About" component={About}/>
         <Route exact path="/404" component={NotFoundPage}/>
         <Route exact path='/ShowArticles' component={ShowArticles} />
